@@ -2,44 +2,41 @@
 const services = [
   {
     title: 'Impresión Offset',
-    description: 'Alta calidad en grandes tirajes: revistas, catálogos, folletos y más con colores precisos.',
-    icon: 'offset',
+    description: 'Alta calidad en grandes tirajes: revistas, catálogos, folletos y libros con colores precisos.',
+    icon: 'M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z',
+    color: 'red',
   },
   {
     title: 'Impresión Digital',
     description: 'Tirajes pequeños y personalizados con entrega rápida y acabados profesionales.',
-    icon: 'digital',
+    icon: 'M2 3h20v14H2z M8 21h8 M12 17v4',
+    color: 'green',
   },
   {
     title: 'Gran Formato',
     description: 'Lonas, vinilos, pendones y señalización exterior con tintas de máxima durabilidad.',
-    icon: 'large',
+    icon: 'M3 3h18v18H3z M3 9h18 M9 21V9',
+    color: 'red',
   },
   {
     title: 'Diseño Gráfico',
     description: 'Identidad de marca, branding, diagramación editorial y piezas publicitarias creativas.',
-    icon: 'design',
+    icon: 'M12 19l7-7 3 3-7 7-3-3z M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z M2 2l7.586 7.586',
+    color: 'green',
   },
   {
     title: 'Empaques y Etiquetas',
     description: 'Diseño y producción de cajas, empaques promocionales y etiquetas adhesivas.',
-    icon: 'packaging',
+    icon: 'M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z M3.27 6.96L12 12.01l8.73-5.05 M12 22.08V12',
+    color: 'red',
   },
   {
     title: 'Publicidad Exterior',
     description: 'Vallas, rotulación vehicular, stands y material POP que genera recordación.',
-    icon: 'outdoor',
+    icon: 'M4 22h16 M6 18h12 M8 14h8 M10 2h4v12h-4z',
+    color: 'green',
   },
 ];
-
-const iconPaths: Record<string, string> = {
-  offset: 'M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z',
-  digital: 'M2 3h20v14H2z M8 21h8 M12 17v4',
-  large: 'M3 3h18v18H3z M3 9h18 M9 21V9',
-  design: 'M12 19l7-7 3 3-7 7-3-3z M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z M2 2l7.586 7.586 M11 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4z',
-  packaging: 'M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z M3.27 6.96L12 12.01l8.73-5.05 M12 22.08V12',
-  outdoor: 'M4 22h16 M6 18h12 M8 14h8 M10 2h4v12h-4z',
-};
 ---
 
 <section class="services section" id="servicios">
@@ -55,22 +52,27 @@ const iconPaths: Record<string, string> = {
 
     <div class="services-grid">
       {services.map((service, idx) => (
-        <article class="service-card fade-in" style={`transition-delay: ${idx * 80}ms`}>
+        <article class:list={['service-card', `tone-${service.color}`, 'fade-in']} style={`transition-delay: ${idx * 70}ms`}>
           <div class="service-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d={iconPaths[service.icon]} />
+              <path d={service.icon} />
             </svg>
           </div>
           <h3>{service.title}</h3>
           <p>{service.description}</p>
-          <a href="#contacto" class="service-link" aria-label={`Más información sobre ${service.title}`}>
-            Más información
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <a href="#contacto" class="service-link" aria-label={`Cotiza ${service.title}`}>
+            Cotizar ahora
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </a>
         </article>
       ))}
+    </div>
+
+    <div class="services-cta fade-in">
+      <p>¿Tu proyecto necesita algo diferente?</p>
+      <a href="#contacto" class="btn btn-secondary">Solicita un servicio a medida</a>
     </div>
   </div>
 </section>
@@ -82,85 +84,123 @@ const iconPaths: Record<string, string> = {
 
   .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.75rem;
   }
 
   .service-card {
     position: relative;
-    padding: 2rem;
+    padding: 2.5rem 2rem;
     background: #fff;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
     overflow: hidden;
+    text-align: center;
   }
 
   .service-card::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
+    left: 50%;
+    width: 80px;
     height: 4px;
-    background: linear-gradient(90deg, var(--color-primary), var(--color-green));
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform var(--transition);
+    border-radius: 0 0 4px 4px;
+    transform: translateX(-50%);
+    background: currentColor;
+    opacity: 0.7;
+    transition: width var(--transition);
   }
 
+  .service-card.tone-red { color: var(--color-primary); }
+  .service-card.tone-green { color: var(--color-green); }
+
   .service-card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-8px);
     box-shadow: var(--shadow-lg);
     border-color: transparent;
   }
 
   .service-card:hover::before {
-    transform: scaleX(1);
+    width: 100%;
   }
 
   .service-icon {
     display: grid;
     place-items: center;
-    width: 56px;
-    height: 56px;
-    border-radius: 14px;
-    background: linear-gradient(135deg, rgba(220, 38, 38, 0.1), rgba(14, 122, 58, 0.1));
-    color: var(--color-primary);
-    margin-bottom: 1.25rem;
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    margin: 0 auto 1.5rem;
+    color: #fff;
+    transition: transform var(--transition);
+  }
+
+  .tone-red .service-icon {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    box-shadow: 0 12px 28px rgba(220, 38, 38, 0.3);
+  }
+
+  .tone-green .service-icon {
+    background: linear-gradient(135deg, var(--color-green), var(--color-green-dark));
+    box-shadow: 0 12px 28px rgba(14, 122, 58, 0.28);
+  }
+
+  .service-card:hover .service-icon {
+    transform: scale(1.08) rotate(-4deg);
   }
 
   .service-icon svg {
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
   }
 
   .service-card h3 {
-    margin-bottom: 0.625rem;
+    margin-bottom: 0.875rem;
+    color: var(--color-secondary);
   }
 
   .service-card p {
     color: var(--color-text-muted);
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
     font-size: 0.95rem;
+    line-height: 1.7;
   }
 
   .service-link {
     display: inline-flex;
     align-items: center;
-    gap: 0.375rem;
-    font-weight: 600;
+    gap: 0.45rem;
+    font-weight: 700;
     font-size: 0.9rem;
-    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
   }
 
   .service-link svg {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
     transition: transform var(--transition);
   }
 
   .service-link:hover svg {
-    transform: translateX(4px);
+    transform: translateX(5px);
+  }
+
+  .services-cta {
+    margin-top: 4rem;
+    text-align: center;
+    padding: 2.5rem;
+    background: linear-gradient(135deg, var(--color-bg-alt), #fff);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+  }
+
+  .services-cta p {
+    font-size: 1.1rem;
+    color: var(--color-text);
+    margin-bottom: 1.25rem;
+    font-weight: 500;
   }
 </style>

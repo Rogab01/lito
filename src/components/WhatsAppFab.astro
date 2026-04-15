@@ -1,0 +1,64 @@
+---
+interface Props {
+  phone?: string;
+  message?: string;
+}
+
+const {
+  phone = '573001234567',
+  message = 'Hola, estoy interesado en los servicios de Lito Latina Editores.',
+} = Astro.props;
+
+const href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+---
+
+<a
+  class="wa-fab"
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Contactar por WhatsApp"
+>
+  <svg viewBox="0 0 32 32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <path
+      fill="currentColor"
+      d="M16.004 3C9.377 3 4 8.373 4 15c0 2.12.56 4.18 1.625 6.004L4 29l8.19-1.587A11.953 11.953 0 0 0 16.004 29C22.63 29 28 23.627 28 17c0-3.207-1.247-6.218-3.514-8.485A11.95 11.95 0 0 0 16.004 3zm0 2c2.673 0 5.186 1.04 7.072 2.927A9.935 9.935 0 0 1 26 17c0 5.514-4.486 10-10 10-1.9 0-3.75-.54-5.353-1.554l-.382-.24-4.86.942.95-4.72-.25-.397A9.935 9.935 0 0 1 6 15c0-5.514 4.486-10 10.004-10zm-4.43 5.7c-.2 0-.53.073-.807.37-.278.297-1.06 1.035-1.06 2.524s1.085 2.928 1.237 3.133c.148.203 2.092 3.34 5.176 4.553 2.562 1.01 3.083.81 3.64.756.56-.053 1.808-.74 2.063-1.453.253-.71.253-1.32.178-1.453-.075-.13-.276-.206-.58-.356-.303-.15-1.793-.885-2.07-.985-.277-.1-.48-.15-.68.15-.204.296-.784.985-.96 1.186-.177.203-.353.228-.655.075-.305-.15-1.286-.472-2.45-1.505-.905-.805-1.517-1.8-1.694-2.103-.176-.3-.018-.465.133-.614.137-.135.304-.353.456-.528.152-.178.203-.306.304-.507.1-.2.05-.377-.025-.528-.075-.152-.66-1.636-.933-2.23-.226-.49-.455-.498-.665-.507l-.502-.01z"
+    />
+  </svg>
+  <span class="wa-label">WhatsApp</span>
+</a>
+
+<style>
+  .wa-fab {
+    position: fixed;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    z-index: 90;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem 0.75rem 0.75rem;
+    background: #25d366;
+    color: #fff;
+    border-radius: var(--radius-pill);
+    box-shadow: 0 12px 28px rgba(37, 211, 102, 0.4);
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+
+  .wa-fab:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 18px 36px rgba(37, 211, 102, 0.45);
+  }
+
+  .wa-fab svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  @media (max-width: 520px) {
+    .wa-label { display: none; }
+    .wa-fab { padding: 0.75rem; }
+  }
+</style>

@@ -1,79 +1,78 @@
 ---
-const features = [
-  {
-    title: 'Tecnología de punta',
-    description: 'Maquinaria offset y digital de última generación para acabados impecables.',
-  },
-  {
-    title: 'Equipo experto',
-    description: 'Diseñadores y técnicos con más de una década de experiencia en el sector.',
-  },
-  {
-    title: 'Entregas puntuales',
-    description: 'Cumplimos los tiempos pactados porque sabemos que tu campaña no espera.',
-  },
-  {
-    title: 'Calidad garantizada',
-    description: 'Control de calidad en cada etapa del proceso, desde el arte hasta el empaque.',
-  },
+const highlights = [
+  { label: 'Litografía', value: 'Offset & Digital' },
+  { label: 'Cobertura', value: 'Latinoamérica' },
+  { label: 'Tiempo de respuesta', value: '24 horas' },
 ];
 ---
 
 <section class="about section" id="nosotros">
   <div class="container about-inner">
     <div class="about-visual fade-in">
-      <div class="visual-block block-primary">
-        <span class="visual-label">+15 años</span>
-        <strong>Imprimiendo confianza</strong>
-      </div>
-      <div class="visual-block block-dark">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M12 2L2 7l10 5 10-5-10-5z M2 17l10 5 10-5 M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-        <span>Procesos certificados</span>
-      </div>
-      <div class="visual-block block-accent">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M20 12V22H4V12 M22 7H2V12H22V7 M12 22V7 M12 7H7.5A2.5 2.5 0 0 1 5 4.5A2.5 2.5 0 0 1 7.5 2C11 2 12 7 12 7 M12 7H16.5A2.5 2.5 0 0 0 19 4.5A2.5 2.5 0 0 0 16.5 2C13 2 12 7 12 7" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-        <span>Soluciones a medida</span>
+      <div class="visual-stack">
+        <div class="visual-main">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="v-grad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#dc2626" />
+                <stop offset="1" stop-color="#991b1b" />
+              </linearGradient>
+            </defs>
+            <rect width="200" height="200" fill="url(#v-grad)" />
+            <g stroke="#fff" stroke-width="2" opacity="0.22">
+              {Array.from({ length: 24 }, (_, i) => (
+                <line x1="-20" y1={i * 9} x2="220" y2={i * 9 - 60} />
+              ))}
+            </g>
+            <g transform="translate(60 40)">
+              <path d="M45 5 C55 5 70 12 78 25 C85 40 90 55 88 72 C85 88 78 100 72 115 C66 130 58 145 52 155 C45 160 38 155 32 145 C25 132 18 118 15 100 C12 82 10 65 15 48 C22 28 32 12 45 5 Z" fill="none" stroke="#fff" stroke-width="2.5" opacity="0.9" />
+              {Array.from({ length: 18 }, (_, i) => (
+                <line x1={15 + (i % 2) * 2} y1={15 + i * 8} x2={80 - (i % 3) * 3} y2={15 + i * 8} stroke="#fff" stroke-width="2" opacity="0.85" />
+              ))}
+            </g>
+          </svg>
+        </div>
+        <div class="visual-badge">
+          <strong>+15</strong>
+          <span>años<br />imprimiendo<br />confianza</span>
+        </div>
       </div>
     </div>
 
     <div class="about-content">
       <span class="eyebrow fade-in">Sobre nosotros</span>
-      <h2 class="fade-in">Una litografía moderna con alma creativa</h2>
-      <p class="fade-in">
+      <h2 class="fade-in">Una litografía con alma latina y mente creativa</h2>
+      <p class="lead fade-in">
         En <strong>Lito Latina Editores</strong> llevamos más de una década transformando ideas
-        en piezas impresas de alto impacto en toda Latinoamérica. Combinamos el oficio tradicional
-        de la litografía con las últimas tecnologías digitales para ofrecer soluciones publicitarias
-        memorables.
+        en piezas impresas de alto impacto. Combinamos el oficio tradicional de la litografía con
+        las últimas tecnologías digitales.
+      </p>
+      <p class="fade-in">
+        Nuestra misión es ser el aliado estratégico que potencia la comunicación visual de cada
+        marca que confía en nosotros, entregando productos con la más alta calidad, en los tiempos
+        pactados y con un servicio que nos hace diferentes.
       </p>
 
-      <ul class="features" role="list">
-        {features.map((feature, idx) => (
-          <li class="fade-in" style={`transition-delay: ${idx * 100}ms`}>
-            <span class="check" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                <path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </span>
-            <div>
-              <h3>{feature.title}</h3>
-              <p>{feature.description}</p>
-            </div>
+      <ul class="highlights" role="list">
+        {highlights.map((h, i) => (
+          <li class="fade-in" style={`transition-delay: ${i * 100}ms`}>
+            <span>{h.label}</span>
+            <strong>{h.value}</strong>
           </li>
         ))}
       </ul>
 
-      <a href="#contacto" class="btn btn-primary fade-in">Hablemos de tu proyecto</a>
+      <div class="about-actions fade-in">
+        <a href="#contacto" class="btn btn-primary">Hablemos de tu proyecto</a>
+        <a href="#razones" class="btn btn-ghost">¿Por qué elegirnos?</a>
+      </div>
     </div>
   </div>
 </section>
 
 <style>
   .about {
-    background: var(--color-bg-alt);
+    background: #fff;
   }
 
   .about-inner {
@@ -83,135 +82,136 @@ const features = [
     align-items: center;
   }
 
-  .about-visual {
+  .visual-stack {
     position: relative;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 180px);
-    gap: 1rem;
+    max-width: 440px;
   }
 
-  .visual-block {
+  .visual-main {
+    position: relative;
+    aspect-ratio: 1 / 1;
     border-radius: var(--radius-lg);
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    box-shadow: var(--shadow-md);
     overflow: hidden;
-    position: relative;
+    box-shadow: var(--shadow-lg);
   }
 
-  .visual-block svg {
-    width: 36px;
-    height: 36px;
-    margin-bottom: 0.75rem;
+  .visual-main svg {
+    width: 100%;
+    height: 100%;
   }
 
-  .visual-block span {
-    font-weight: 600;
-    font-size: 0.95rem;
+  .visual-badge {
+    position: absolute;
+    bottom: -28px;
+    right: -28px;
+    background: var(--color-green);
+    color: #fff;
+    border-radius: var(--radius-lg);
+    padding: 1.5rem 1.75rem;
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-width: 200px;
   }
 
-  .block-primary {
-    grid-row: span 2;
-    background: linear-gradient(160deg, var(--color-primary), var(--color-primary-dark));
+  .visual-badge strong {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1;
     color: #fff;
   }
-  .block-primary .visual-label {
-    display: inline-block;
+
+  .visual-badge span {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 1.4;
+  }
+
+  .about-content p {
+    color: var(--color-text-muted);
+    margin-bottom: 1.25rem;
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .about-content .lead {
+    font-size: 1.1rem;
+    color: var(--color-text);
+    margin-top: 1.25rem;
+  }
+
+  .highlights {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 2rem 0 2.5rem;
+    padding: 1.5rem;
+    background: var(--color-bg-alt);
+    border-radius: var(--radius-md);
+  }
+
+  .highlights li {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .highlights li + li {
+    border-left: 1px solid var(--color-border);
+    padding-left: 1rem;
+  }
+
+  .highlights span {
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    opacity: 0.85;
+    color: var(--color-text-muted);
     margin-bottom: 0.25rem;
     font-weight: 600;
   }
-  .block-primary strong {
+
+  .highlights strong {
     font-family: var(--font-display);
-    font-size: 1.75rem;
-    line-height: 1.15;
+    font-weight: 700;
+    color: var(--color-secondary);
+    font-size: 0.95rem;
   }
 
-  .block-dark {
-    background: var(--color-bg-dark);
-    color: var(--color-text-light);
-  }
-
-  .block-accent {
-    background: linear-gradient(160deg, var(--color-green), var(--color-green-dark));
-    color: #fff;
-  }
-
-  .eyebrow {
-    display: inline-block;
-    font-size: 0.875rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-primary);
-    margin-bottom: 0.75rem;
-  }
-
-  .about-content > p {
-    color: var(--color-text-muted);
-    margin: 1.25rem 0 2rem;
-    font-size: 1.05rem;
-  }
-
-  .features {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem 1.5rem;
-    margin-bottom: 2.5rem;
-  }
-
-  .features li {
+  .about-actions {
     display: flex;
-    gap: 0.875rem;
-  }
-
-  .check {
-    flex-shrink: 0;
-    display: grid;
-    place-items: center;
-    width: 32px;
-    height: 32px;
-    background: rgba(220, 38, 38, 0.1);
-    color: var(--color-primary);
-    border-radius: 50%;
-  }
-
-  .check svg {
-    width: 16px;
-    height: 16px;
-  }
-
-  .features h3 {
-    font-size: 1rem;
-    margin-bottom: 0.25rem;
-  }
-
-  .features p {
-    font-size: 0.875rem;
-    color: var(--color-text-muted);
+    gap: 1rem;
+    flex-wrap: wrap;
   }
 
   @media (max-width: 960px) {
     .about-inner {
       grid-template-columns: 1fr;
-      gap: 3rem;
+      gap: 5rem;
     }
-    .about-visual {
-      grid-template-rows: repeat(2, 160px);
-      max-width: 520px;
+    .visual-stack {
+      margin: 0 auto;
     }
   }
 
   @media (max-width: 520px) {
-    .features {
+    .highlights {
       grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+    .highlights li + li {
+      border-left: none;
+      border-top: 1px solid var(--color-border);
+      padding-left: 0;
+      padding-top: 0.75rem;
+    }
+    .visual-badge {
+      right: 0;
+      bottom: -20px;
     }
   }
 </style>

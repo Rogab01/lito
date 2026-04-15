@@ -2,15 +2,26 @@
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import Services from '../components/Services.astro';
+import Razones from '../components/Razones.astro';
 import About from '../components/About.astro';
+import CtaBanner from '../components/CtaBanner.astro';
 import Portfolio from '../components/Portfolio.astro';
 import Contact from '../components/Contact.astro';
+import WaveDivider from '../components/WaveDivider.astro';
 ---
 
 <Layout>
   <Hero />
   <Services />
+
+  <WaveDivider from="#ffffff" to="#f7f5f2" />
+  <Razones />
+  <WaveDivider from="#f7f5f2" to="#ffffff" flip />
+
   <About />
+  <CtaBanner />
+
   <Portfolio />
+  <WaveDivider from="#f7f5f2" to="#ffffff" flip />
   <Contact />
 </Layout>

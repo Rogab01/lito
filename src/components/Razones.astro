@@ -1,0 +1,175 @@
+---
+const razones = [
+  {
+    num: '01',
+    title: 'Más de 15 años de experiencia',
+    description: 'Una trayectoria sólida respaldando cada proyecto con experiencia comprobada en el sector editorial y publicitario.',
+    icon: 'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z',
+  },
+  {
+    num: '02',
+    title: 'Tecnología de última generación',
+    description: 'Maquinaria offset y digital de vanguardia que garantiza impresiones con calidad fotográfica.',
+    icon: 'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z M14 2v6h6 M16 13H8 M16 17H8 M10 9H8',
+  },
+  {
+    num: '03',
+    title: 'Diseño creativo a la medida',
+    description: 'Equipo de diseñadores gráficos que transforman tu idea en piezas visualmente memorables.',
+    icon: 'M12 19l7-7 3 3-7 7-3-3z M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z M2 2l7.586 7.586',
+  },
+  {
+    num: '04',
+    title: 'Entregas puntuales',
+    description: 'Cumplimos los tiempos pactados porque sabemos que tu campaña no espera.',
+    icon: 'M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z M12 6v6l4 2',
+  },
+  {
+    num: '05',
+    title: 'Calidad certificada',
+    description: 'Control de calidad riguroso en cada etapa, desde la preprensa hasta el acabado final.',
+    icon: 'M9 12l2 2 4-4 M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9a9 9 0 0 1 9 9z',
+  },
+  {
+    num: '06',
+    title: 'Asesoría personalizada',
+    description: 'Un equipo consultor que te acompaña desde la idea hasta la entrega de tu proyecto.',
+    icon: 'M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z',
+  },
+  {
+    num: '07',
+    title: 'Precios competitivos',
+    description: 'Relación calidad-precio que maximiza el retorno de tu inversión publicitaria.',
+    icon: 'M12 2v20 M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6',
+  },
+  {
+    num: '08',
+    title: 'Cobertura nacional',
+    description: 'Envíos y logística en toda Latinoamérica con los más altos estándares de seguridad.',
+    icon: 'M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z',
+  },
+];
+---
+
+<section class="razones section" id="razones">
+  <div class="container">
+    <header class="section-header fade-in">
+      <span class="eyebrow">¿Por qué elegirnos?</span>
+      <h2>Razones para confiar en Lito Latina</h2>
+      <p>
+        Más que una litografía: somos un aliado estratégico que cuida cada detalle para que tu
+        marca se destaque.
+      </p>
+    </header>
+
+    <div class="razones-grid">
+      {razones.map((r, idx) => (
+        <article class="razon-card fade-in" style={`transition-delay: ${idx * 60}ms`}>
+          <span class="razon-num">{r.num}</span>
+          <div class="razon-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d={r.icon} />
+            </svg>
+          </div>
+          <h3>{r.title}</h3>
+          <p>{r.description}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .razones {
+    background: var(--color-bg-alt);
+  }
+
+  .razones-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.75rem;
+  }
+
+  .razon-card {
+    position: relative;
+    background: #fff;
+    padding: 2.25rem 1.75rem 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition), box-shadow var(--transition);
+    overflow: hidden;
+  }
+
+  .razon-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.04), rgba(14, 122, 58, 0.04));
+    opacity: 0;
+    transition: opacity var(--transition);
+  }
+
+  .razon-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .razon-card:hover::before {
+    opacity: 1;
+  }
+
+  .razon-card > * {
+    position: relative;
+  }
+
+  .razon-num {
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 800;
+    color: rgba(220, 38, 38, 0.08);
+    line-height: 1;
+    transition: color var(--transition);
+  }
+
+  .razon-card:hover .razon-num {
+    color: rgba(220, 38, 38, 0.18);
+  }
+
+  .razon-icon {
+    display: grid;
+    place-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    color: #fff;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 8px 20px rgba(220, 38, 38, 0.25);
+    transition: background var(--transition);
+  }
+
+  .razon-card:nth-child(even) .razon-icon {
+    background: linear-gradient(135deg, var(--color-green), var(--color-green-dark));
+    box-shadow: 0 8px 20px rgba(14, 122, 58, 0.25);
+  }
+
+  .razon-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .razon-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.625rem;
+    line-height: 1.35;
+  }
+
+  .razon-card p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+</style>
