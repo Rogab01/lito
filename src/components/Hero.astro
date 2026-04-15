@@ -1,0 +1,289 @@
+---
+const stats = [
+  { value: '+15', label: 'Años de experiencia' },
+  { value: '+1.2k', label: 'Clientes satisfechos' },
+  { value: '+8k', label: 'Proyectos entregados' },
+];
+---
+
+<section class="hero" id="inicio">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="grid-pattern"></div>
+  </div>
+
+  <div class="container hero-inner">
+    <div class="hero-content">
+      <span class="badge fade-in">
+        <span class="badge-dot"></span>
+        Litografía & Publicidad
+      </span>
+      <h1 class="fade-in">
+        Imprimimos ideas que <span class="highlight">impulsan tu marca</span>
+      </h1>
+      <p class="hero-text fade-in">
+        En Litolatina combinamos tecnología de impresión de última generación con diseño creativo
+        para ofrecer soluciones publicitarias que destacan, perduran y conectan con tu audiencia.
+      </p>
+      <div class="hero-actions fade-in">
+        <a href="#contacto" class="btn btn-primary">Solicita tu cotización</a>
+        <a href="#servicios" class="btn btn-outline">Ver servicios</a>
+      </div>
+
+      <ul class="stats fade-in" role="list">
+        {stats.map((s) => (
+          <li>
+            <strong>{s.value}</strong>
+            <span>{s.label}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="hero-visual fade-in" aria-hidden="true">
+      <div class="card card-1">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z" />
+          </svg>
+        </div>
+        <h3>Offset HD</h3>
+        <p>Calidad fotográfica en grandes tirajes.</p>
+      </div>
+      <div class="card card-2">
+        <div class="card-icon accent">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z" />
+          </svg>
+        </div>
+        <h3>Diseño creativo</h3>
+        <p>Equipo de diseñadores expertos.</p>
+      </div>
+      <div class="card card-3">
+        <div class="card-icon dark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+          </svg>
+        </div>
+        <h3>Atención 24/7</h3>
+        <p>Soporte rápido y personalizado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    padding: calc(72px + 4rem) 0 5rem;
+    overflow: hidden;
+    background: linear-gradient(180deg, #fff 0%, var(--color-bg-alt) 100%);
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.35;
+  }
+  .orb-1 {
+    top: -10%;
+    right: -5%;
+    width: 480px;
+    height: 480px;
+    background: radial-gradient(circle, var(--color-primary), transparent 70%);
+  }
+  .orb-2 {
+    bottom: -20%;
+    left: -10%;
+    width: 520px;
+    height: 520px;
+    background: radial-gradient(circle, var(--color-accent), transparent 70%);
+    opacity: 0.25;
+  }
+
+  .grid-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(225, 29, 72, 0.08);
+    color: var(--color-primary);
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 999px;
+    margin-bottom: 1.5rem;
+  }
+
+  .badge-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(225, 29, 72, 0.2);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.4); }
+    50% { box-shadow: 0 0 0 8px rgba(225, 29, 72, 0); }
+  }
+
+  .highlight {
+    background: linear-gradient(120deg, var(--color-primary), var(--color-accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .hero-text {
+    margin: 1.5rem 0 2rem;
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    max-width: 540px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+
+  .stats {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .stats li {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stats strong {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--color-secondary);
+  }
+
+  .stats span {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .hero-visual {
+    position: relative;
+    height: 480px;
+  }
+
+  .card {
+    position: absolute;
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    width: 240px;
+    border: 1px solid var(--color-border);
+  }
+
+  .card h3 {
+    font-size: 1.05rem;
+    margin: 0.75rem 0 0.25rem;
+  }
+
+  .card p {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .card-icon {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(225, 29, 72, 0.1);
+    color: var(--color-primary);
+  }
+  .card-icon.accent {
+    background: rgba(245, 158, 11, 0.12);
+    color: var(--color-accent);
+  }
+  .card-icon.dark {
+    background: rgba(15, 23, 42, 0.08);
+    color: var(--color-secondary);
+  }
+  .card-icon svg { width: 24px; height: 24px; }
+
+  .card-1 {
+    top: 0;
+    left: 0;
+    animation: float 6s ease-in-out infinite;
+  }
+  .card-2 {
+    top: 40%;
+    right: 0;
+    animation: float 6s ease-in-out infinite 2s;
+  }
+  .card-3 {
+    bottom: 0;
+    left: 15%;
+    animation: float 6s ease-in-out infinite 4s;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  @media (max-width: 960px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    .hero-visual {
+      height: 420px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .stats {
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .stats strong { font-size: 1.5rem; }
+    .card { width: 200px; padding: 1.25rem; }
+  }
+</style>
