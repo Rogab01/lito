@@ -22,9 +22,11 @@ const stats = [
       <h1 class="fade-in">
         Imprimimos ideas que <span class="highlight">impulsan tu marca</span>
       </h1>
+      <p class="slogan fade-in">"Calidad y Responsabilidad nos hacen diferentes"</p>
       <p class="hero-text fade-in">
-        En Litolatina combinamos tecnología de impresión de última generación con diseño creativo
-        para ofrecer soluciones publicitarias que destacan, perduran y conectan con tu audiencia.
+        En <strong>Lito Latina Editores</strong> combinamos tecnología de impresión de última generación con diseño
+        creativo para ofrecer soluciones publicitarias que destacan, perduran y conectan con tu
+        audiencia en toda Latinoamérica.
       </p>
       <div class="hero-actions fade-in">
         <a href="#contacto" class="btn btn-primary">Solicita tu cotización</a>
@@ -106,8 +108,8 @@ const stats = [
     left: -10%;
     width: 520px;
     height: 520px;
-    background: radial-gradient(circle, var(--color-accent), transparent 70%);
-    opacity: 0.25;
+    background: radial-gradient(circle, var(--color-green), transparent 70%);
+    opacity: 0.2;
   }
 
   .grid-pattern {
@@ -134,7 +136,7 @@ const stats = [
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem 1rem;
-    background: rgba(225, 29, 72, 0.08);
+    background: rgba(220, 38, 38, 0.08);
     color: var(--color-primary);
     font-size: 0.875rem;
     font-weight: 600;
@@ -147,24 +149,33 @@ const stats = [
     height: 8px;
     background: var(--color-primary);
     border-radius: 50%;
-    box-shadow: 0 0 0 4px rgba(225, 29, 72, 0.2);
+    box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.2);
     animation: pulse 2s infinite;
   }
 
   @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.4); }
-    50% { box-shadow: 0 0 0 8px rgba(225, 29, 72, 0); }
+    0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
+    50% { box-shadow: 0 0 0 8px rgba(220, 38, 38, 0); }
   }
 
   .highlight {
-    background: linear-gradient(120deg, var(--color-primary), var(--color-accent));
+    background: linear-gradient(120deg, var(--color-primary), var(--color-green));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
 
+  .slogan {
+    font-style: italic;
+    color: var(--color-primary);
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin-top: 1rem;
+    max-width: 540px;
+  }
+
   .hero-text {
-    margin: 1.5rem 0 2rem;
+    margin: 1rem 0 2rem;
     font-size: 1.125rem;
     color: var(--color-text-muted);
     max-width: 540px;
@@ -232,12 +243,12 @@ const stats = [
     width: 48px;
     height: 48px;
     border-radius: 12px;
-    background: rgba(225, 29, 72, 0.1);
+    background: rgba(220, 38, 38, 0.1);
     color: var(--color-primary);
   }
   .card-icon.accent {
-    background: rgba(245, 158, 11, 0.12);
-    color: var(--color-accent);
+    background: rgba(14, 122, 58, 0.12);
+    color: var(--color-green);
   }
   .card-icon.dark {
     background: rgba(15, 23, 42, 0.08);

@@ -1,5 +1,6 @@
 node_modules/
 dist/
+datos de referencia/
 .astro/
 .env
 .env.production
