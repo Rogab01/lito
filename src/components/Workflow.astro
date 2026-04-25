@@ -1,0 +1,215 @@
+---
+const steps = [
+  {
+    number: '01',
+    title: 'Idea y Diseño',
+    description: 'Comprendemos tu necesidad y creamos la propuesta visual perfecta.',
+    icon: 'M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41M12 6a6 6 0 100 12 6 6 0 000-12z'
+  },
+  {
+    number: '02',
+    title: 'Pre-prensa',
+    description: 'Ajustamos colores, márgenes y formatos para asegurar un resultado óptimo.',
+    icon: 'M9 17H5a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2h-4l-4 4-4-4z'
+  },
+  {
+    number: '03',
+    title: 'Impresión',
+    description: 'Nuestra maquinaria entra en acción con máxima precisión y velocidad.',
+    icon: 'M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z'
+  },
+  {
+    number: '04',
+    title: 'Acabados y Entrega',
+    description: 'Aplicamos detalles premium y entregamos tu pedido a tiempo.',
+    icon: 'M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4'
+  }
+];
+---
+
+<section class="workflow section" id="proceso">
+  <div class="container">
+    <header class="section-header fade-in">
+      <span class="eyebrow">Proceso Creativo</span>
+      <h2>De la idea al papel impreso</h2>
+      <p>
+        Un flujo de trabajo optimizado para garantizar la máxima calidad en el menor tiempo posible.
+      </p>
+    </header>
+
+    <div class="workflow-timeline">
+      {steps.map((step, idx) => (
+        <div class="workflow-step fade-in" style={`transition-delay: ${idx * 150}ms`}>
+          <div class="step-icon-wrapper">
+            <div class="step-number">{step.number}</div>
+            <div class="step-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d={step.icon} />
+              </svg>
+            </div>
+          </div>
+          <div class="step-content">
+            <h3>{step.title}</h3>
+            <p>{step.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .workflow {
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .workflow-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  /* Línea conectora central (Desktop) */
+  @media (min-width: 768px) {
+    .workflow-timeline {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .workflow-timeline::before {
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: 50px;
+      right: 50px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-green));
+      z-index: 1;
+      opacity: 0.3;
+    }
+  }
+
+  .workflow-step {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+  }
+
+  .step-icon-wrapper {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+
+  .step-number {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #fff;
+    background: var(--color-primary);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    z-index: 3;
+    box-shadow: 0 4px 10px rgba(220,30,30,0.3);
+  }
+
+  .step-icon {
+    width: 80px;
+    height: 80px;
+    background: #fff;
+    border: 2px solid var(--color-border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-secondary);
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  }
+
+  .step-icon svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .workflow-step:hover .step-icon {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(220,30,30,0.15);
+  }
+
+  .step-content h3 {
+    font-size: 1.25rem;
+    color: var(--color-secondary);
+    margin-bottom: 0.75rem;
+  }
+
+  .step-content p {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 767px) {
+    .workflow-timeline {
+      padding-left: 2rem;
+    }
+    
+    .workflow-timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 3rem;
+      width: 2px;
+      background: linear-gradient(180deg, var(--color-primary), var(--color-green));
+      z-index: 1;
+      opacity: 0.3;
+    }
+
+    .workflow-step {
+      flex-direction: row;
+      text-align: left;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .step-icon-wrapper {
+      margin-bottom: 0;
+    }
+
+    .step-icon {
+      width: 60px;
+      height: 60px;
+    }
+
+    .step-icon svg {
+      width: 28px;
+      height: 28px;
+    }
+    
+    .step-number {
+      width: 28px;
+      height: 28px;
+      font-size: 0.75rem;
+      top: -10px;
+      left: -10px;
+    }
+  }
+</style>

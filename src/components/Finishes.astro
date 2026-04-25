@@ -1,0 +1,218 @@
+---
+const finishes = [
+  {
+    id: 'uv',
+    title: 'Barniz UV Sectorizado',
+    description: 'Resalta detalles específicos con un brillo espectacular sobre acabados mate.',
+    effect: 'Brillo dinámico al interactuar',
+  },
+  {
+    id: 'foil',
+    title: 'Estampado Foil',
+    description: 'Tonos metalizados (oro, plata, cobre) para dar un toque premium y elegante.',
+    effect: 'Reflejo metálico',
+  },
+  {
+    id: 'emboss',
+    title: 'Relieve / Repujado',
+    description: 'Añade textura táctil a tus diseños, ideal para logotipos y tarjetas de presentación.',
+    effect: 'Sombreado 3D',
+  },
+  {
+    id: 'diecut',
+    title: 'Troquelado Especial',
+    description: 'Cortes personalizados para darle a tus impresos formas únicas y creativas.',
+    effect: 'Corte interactivo',
+  }
+];
+---
+
+<section class="finishes section" id="acabados">
+  <div class="container">
+    <header class="section-header fade-in">
+      <span class="eyebrow">Catálogo Interactivo</span>
+      <h2>Acabados que marcan la diferencia</h2>
+      <p>
+        Pasa el cursor sobre las tarjetas para experimentar visualmente la calidad de nuestros acabados premium.
+      </p>
+    </header>
+
+    <div class="finishes-grid">
+      {finishes.map((finish, idx) => (
+        <article class={`finish-card finish-${finish.id} fade-in`} style={`transition-delay: ${idx * 100}ms`}>
+          <div class="finish-content">
+            <h3>{finish.title}</h3>
+            <p>{finish.description}</p>
+            <span class="effect-label">{finish.effect}</span>
+          </div>
+          <div class="finish-interactive-layer">
+            <span class="lito-logo">Litolatina</span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .finishes {
+    background: var(--color-bg-alt);
+    overflow: hidden;
+  }
+
+  .finishes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+  }
+
+  .finish-card {
+    position: relative;
+    border-radius: var(--radius-lg);
+    background: #fff;
+    padding: 2.5rem 2rem;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    overflow: hidden;
+    cursor: crosshair;
+    display: flex;
+    flex-direction: column;
+    min-height: 320px;
+  }
+
+  .finish-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .finish-content {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 2rem;
+  }
+
+  .finish-content h3 {
+    color: var(--color-secondary);
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+  }
+
+  .finish-content p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .effect-label {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: rgba(0,0,0,0.05);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Interactive Layers */
+  .finish-interactive-layer {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 200px;
+    height: 200px;
+    background: var(--color-bg);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    z-index: 1;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .lito-logo {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.8rem;
+    color: var(--color-text-muted);
+    opacity: 0.5;
+    transition: all 0.4s ease;
+  }
+
+  /* 1. UV Spot (Brillo) */
+  .finish-uv .finish-interactive-layer {
+    background: #2a2a2a;
+  }
+  .finish-uv .lito-logo {
+    color: #444;
+  }
+  .finish-uv:hover .finish-interactive-layer {
+    transform: scale(1.1);
+  }
+  .finish-uv:hover .lito-logo {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255,255,255,0.8), 0 0 20px rgba(255,255,255,0.6);
+  }
+
+  /* 2. Foil (Metálico) */
+  .finish-foil .finish-interactive-layer {
+    background: linear-gradient(135deg, #f3e5f5, #fff);
+  }
+  .finish-foil .lito-logo {
+    color: #ddd;
+  }
+  .finish-foil:hover .lito-logo {
+    background: linear-gradient(110deg, #ffd700 0%, #ff8c00 50%, #ffd700 100%);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shine 2s linear infinite;
+  }
+
+  /* 3. Emboss (Relieve) */
+  .finish-emboss .finish-interactive-layer {
+    background: #e0e5ec;
+  }
+  .finish-emboss .lito-logo {
+    color: #e0e5ec;
+  }
+  .finish-emboss:hover .lito-logo {
+    text-shadow: 3px 3px 6px #a3b1c6, -3px -3px 6px #ffffff;
+  }
+
+  /* 4. Diecut (Troquel) */
+  .finish-diecut .finish-interactive-layer {
+    background: var(--color-primary);
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  }
+  .finish-diecut .lito-logo {
+    color: rgba(255,255,255,0.5);
+  }
+  .finish-diecut:hover .finish-interactive-layer {
+    border-radius: 50%;
+    transform: scale(1.2) rotate(15deg);
+  }
+  .finish-diecut:hover .lito-logo {
+    color: #fff;
+  }
+
+  @keyframes shine {
+    to {
+      background-position: 200% center;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .finish-interactive-layer {
+      width: 150px;
+      height: 150px;
+      bottom: -10px;
+      right: -10px;
+    }
+    .lito-logo {
+      font-size: 1.4rem;
+    }
+  }
+</style>

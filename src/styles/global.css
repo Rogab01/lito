@@ -1,11 +1,33 @@
 :root {
-  --color-primary: #dc2626;
-  --color-primary-dark: #991b1b;
-  --color-primary-light: #f87171;
-  --color-green: #0e7a3a;
-  --color-green-dark: #065f28;
-  --color-green-light: #16a34a;
-  --color-accent: #0e7a3a;
+  /* Brand reds — palette row 3 */
+  --color-red-deep: #6b0e0e;
+  --color-red-dark: #8b1616;
+  --color-red: #dc1e1e;
+  --color-red-bright: #ed1c1c;
+  --color-red-coral: #e55549;
+  --color-red-salmon: #e87070;
+
+  /* Brand greens — palette row 1 (cool/forest) */
+  --color-green-deep: #052e14;
+  --color-green-darker: #0a5029;
+  --color-green: #0f7a3a;
+  --color-green-medium: #17904a;
+  --color-green-emerald: #1ba560;
+  --color-green-bright: #1fbe70;
+  --color-green-mint: #2fd68a;
+
+  /* Accent lime — palette row 2 (warm/lime) */
+  --color-lime: #7dce3f;
+
+  /* Aliases (kept for backwards compatibility across components) */
+  --color-primary: var(--color-red);
+  --color-primary-dark: var(--color-red-dark);
+  --color-primary-light: var(--color-red-salmon);
+  --color-green-dark: var(--color-green-darker);
+  --color-green-light: var(--color-green-emerald);
+  --color-accent: var(--color-green);
+
+  /* Neutrals */
   --color-secondary: #0f172a;
   --color-bg: #ffffff;
   --color-bg-alt: #f7f5f2;
@@ -15,6 +37,14 @@
   --color-text-muted: #6b7280;
   --color-text-light: #f1f5f9;
   --color-border: #ececec;
+
+  /* Brand gradients */
+  --gradient-red: linear-gradient(135deg, var(--color-red) 0%, var(--color-red-dark) 100%);
+  --gradient-red-deep: linear-gradient(135deg, var(--color-red-dark) 0%, var(--color-red-deep) 100%);
+  --gradient-green: linear-gradient(135deg, var(--color-green) 0%, var(--color-green-darker) 100%);
+  --gradient-green-deep: linear-gradient(135deg, var(--color-green-darker) 0%, var(--color-green-deep) 100%);
+  --gradient-brand: linear-gradient(135deg, var(--color-red) 0%, var(--color-green) 100%);
+  --gradient-hero: linear-gradient(135deg, var(--color-red-deep) 0%, var(--color-red) 45%, var(--color-green) 100%);
 
   --font-sans: 'Open Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --font-display: 'Montserrat', var(--font-sans);
@@ -149,27 +179,27 @@ h3 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); }
 }
 
 .btn-primary {
-  background: var(--color-primary);
+  background: var(--color-red);
   color: #fff;
-  box-shadow: 0 10px 24px rgba(220, 38, 38, 0.3);
+  box-shadow: 0 10px 24px rgba(220, 30, 30, 0.32);
 }
 
 .btn-primary:hover {
-  background: var(--color-primary-dark);
+  background: var(--color-red-dark);
   transform: translateY(-3px);
-  box-shadow: 0 16px 32px rgba(220, 38, 38, 0.35);
+  box-shadow: 0 16px 32px rgba(107, 14, 14, 0.4);
 }
 
 .btn-secondary {
   background: var(--color-green);
   color: #fff;
-  box-shadow: 0 10px 24px rgba(14, 122, 58, 0.28);
+  box-shadow: 0 10px 24px rgba(15, 122, 58, 0.3);
 }
 
 .btn-secondary:hover {
-  background: var(--color-green-dark);
+  background: var(--color-green-darker);
   transform: translateY(-3px);
-  box-shadow: 0 16px 32px rgba(14, 122, 58, 0.35);
+  box-shadow: 0 16px 32px rgba(5, 46, 20, 0.4);
 }
 
 .btn-outline {

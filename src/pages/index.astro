@@ -8,20 +8,31 @@ import CtaBanner from '../components/CtaBanner.astro';
 import Portfolio from '../components/Portfolio.astro';
 import Contact from '../components/Contact.astro';
 import WaveDivider from '../components/WaveDivider.astro';
+
+// Nuevas Secciones Creativas
+import ClientsMarquee from '../components/ClientsMarquee.astro';
+import Finishes from '../components/Finishes.astro';
+import Workflow from '../components/Workflow.astro';
+import FAQ from '../components/FAQ.astro';
 ---
 
 <Layout>
   <Hero />
+  <ClientsMarquee />
   <Services />
+  <Finishes />
 
   <WaveDivider from="#ffffff" to="#f7f5f2" />
   <Razones />
+  
+  <Workflow />
   <WaveDivider from="#f7f5f2" to="#ffffff" flip />
 
   <About />
   <CtaBanner />
 
   <Portfolio />
+  <FAQ />
   <WaveDivider from="#f7f5f2" to="#ffffff" flip />
   <Contact />
 </Layout>

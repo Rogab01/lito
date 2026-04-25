@@ -1,0 +1,106 @@
+---
+const clients = [
+  { name: 'Empresa Alpha' },
+  { name: 'Agencia Beta' },
+  { name: 'Grupo Gamma' },
+  { name: 'Industrias Delta' },
+  { name: 'Estudio Epsilon' },
+  { name: 'Corporación Zeta' },
+];
+
+// Duplicamos el array para el efecto infinito suave
+const marqueeClients = [...clients, ...clients];
+---
+
+<section class="clients section">
+  <div class="container fade-in">
+    <p class="clients-title">Marcas que confían en nuestra calidad</p>
+    
+    <div class="marquee-container">
+      <div class="marquee-track">
+        {marqueeClients.map((client) => (
+          <div class="client-logo">
+            {/* SVG Placeholder genérico para simular logos de marcas */}
+            <svg viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="120" height="40" rx="4" fill="currentColor" fill-opacity="0.05"/>
+              <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="currentColor" font-weight="600" font-size="14" font-family="system-ui, sans-serif" opacity="0.6">
+                {client.name}
+              </text>
+            </svg>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .clients {
+    padding: 4rem 0;
+    background: #fff;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    overflow: hidden;
+  }
+
+  .clients-title {
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    margin-bottom: 2.5rem;
+  }
+
+  .marquee-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    /* Efecto difuminado en los bordes */
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: scroll 30s linear infinite;
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  .client-logo {
+    width: 160px;
+    height: 60px;
+    margin: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-secondary);
+    transition: color 0.3s ease;
+  }
+
+  .client-logo:hover {
+    color: var(--color-primary);
+  }
+
+  .client-logo svg {
+    width: 100%;
+    height: auto;
+  }
+
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* Se desplaza la mitad porque duplicamos los items */
+  }
+
+  @media (max-width: 768px) {
+    .client-logo {
+      width: 120px;
+      margin: 0 1.5rem;
+    }
+  }
+</style>
